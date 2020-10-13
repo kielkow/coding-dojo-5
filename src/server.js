@@ -5,7 +5,13 @@ const mongoose = require('mongoose');
 
 const exceptionHandler = require('./middlewares/ExceptionHandler');
 
-mongoose.connect('mongodb://localhost:47017/desafiodb', { useNewUrlParser: true });
+mongoose.connect(
+    'mongodb://desafiolinkapi:desafiolinkapi@localhost:47017/desafiodb?retryWrites=true&w=majority',
+    { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true 
+    }
+);
 mongoose.connection.on('connected', () => console.log('Mongo connected'));
 
 class App {
