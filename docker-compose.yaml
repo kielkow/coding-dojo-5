@@ -1,0 +1,30 @@
+
+version: '3'
+
+services:
+  product-api:
+    build: .
+    container_name: product-api
+    volumes:
+      - .:/home/node/api
+      - /home/node/api/node_modules
+    ports:
+      - '3000:3000'
+    depends_on:
+      - product-mongodb
+    networks:
+      - product-network
+  product-mongodb:
+    image: bitnami/mongodb:latest
+    container_name: product-mongodb
+    volumes:
+      - product-mongodb-data:/data
+    networks:
+      - product-network
+
+volumes:
+  product-mongodb-data:
+
+networks:
+  product-network:
+    driver: bridge
