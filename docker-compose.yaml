@@ -5,6 +5,7 @@ services:
   product-api:
     build: .
     container_name: product-api
+    restart: always
     volumes:
       - .:/home/node/api
       - /home/node/api/node_modules
@@ -16,6 +17,7 @@ services:
       - product-network
   product-mongodb:
     image: bitnami/mongodb:latest
+    restart: always
     container_name: product-mongodb
     volumes:
       - product-mongodb-data:/data
