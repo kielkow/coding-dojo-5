@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const exceptionHandler = require('./middlewares/ExceptionHandler');
 
-mongoose.connect('mongodb://localhost:27017/desafiodb', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:47017/desafiodb', { useNewUrlParser: true });
 mongoose.connection.on('connected', () => console.log('Mongo connected'));
 
 class App {
