@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');
@@ -6,13 +8,13 @@ const mongoose = require('mongoose');
 const exceptionHandler = require('./middlewares/ExceptionHandler');
 
 mongoose.connect(
-    'mongodb://desafiolinkapi:desafiolinkapi@localhost:47017/desafiodb?retryWrites=true&w=majority',
-    { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true 
+    `${process.env.MONGO_URL}`,
+    {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+        useUnifiedTopology: true,
     }
 );
-mongoose.connection.on('connected', () => console.log('Mongo connected'));
 
 class App {
     constructor() {

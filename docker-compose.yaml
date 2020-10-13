@@ -19,6 +19,12 @@ services:
     image: bitnami/mongodb:latest
     restart: always
     container_name: product-mongodb
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MONGODB_USERNAME=${MONGODB_USERNAME}
+      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
     volumes:
       - product-mongodb-data:/data
     networks:
